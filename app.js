@@ -16,8 +16,10 @@ var methodOverride = require("method-override");
 var flash = require("connect-flash");
 
 
-// mongoose.connect("mongodb://localhost/yelp_camp");
-mongoose.connect("mongodb://cory:password@ds249398.mlab.com:49398/yelpcamp");
+console.log(process.env.DATABASEURL);
+
+mongoose.connect(process.env.DATABASEURL);
+// mongoose.connect("mongodb://cory:password@ds249398.mlab.com:49398/yelpcamp");
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
