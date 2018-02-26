@@ -15,8 +15,9 @@ var commentRoutes = require("./routes/comments"),
 var methodOverride = require("method-override");
 var flash = require("connect-flash");
 
-mongoose.connect(process.env.DATABASEURL);
-// mongoose.connect("mongodb://cory:password@ds249398.mlab.com:49398/yelpcamp");
+var url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp"
+
+mongoose.connect(url);
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
